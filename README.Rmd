@@ -24,7 +24,7 @@ The goal of tidyrates is to ...
 
 ## Installation
 
-You can install the development version of tidyrates from [GitHub](https://github.com/) with:
+You can install the development version of tidyrates from [GitHub](https://github.com/rfsaldanha/tidyrates) with:
 
 ``` r
 # install.packages("devtools")
@@ -33,25 +33,12 @@ devtools::install_github("rfsaldanha/tidyrates")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
 ```{r example}
 library(tidyrates)
-## basic example code
+
+standard_population <- c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
+
+rate_adj_direct(fleiss_data, .std = standard_population, .keys = "key")
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

@@ -16,7 +16,7 @@ The goal of tidyrates is to …
 ## Installation
 
 You can install the development version of tidyrates from
-[GitHub](https://github.com/) with:
+[GitHub](https://github.com/rfsaldanha/tidyrates) with:
 
 ``` r
 # install.packages("devtools")
@@ -25,33 +25,18 @@ devtools::install_github("rfsaldanha/tidyrates")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
 ``` r
 library(tidyrates)
-## basic example code
+
+standard_population <- c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
+
+rate_adj_direct(fleiss_data, .std = standard_population, .keys = "key")
+#> # A tibble: 5 × 5
+#>   key    crude.rate adj.rate      lci      uci
+#>   <chr>       <dbl>    <dbl>    <dbl>    <dbl>
+#> 1 k1       0.000563 0.000923 0.000804 0.00106 
+#> 2 k2       0.000676 0.000912 0.000824 0.00101 
+#> 3 k3       0.000833 0.000851 0.000772 0.000942
+#> 4 k4       0.00115  0.000927 0.000800 0.00115 
+#> 5 k5plus   0.00167  0.000755 0.000677 0.00188
 ```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
