@@ -8,10 +8,11 @@ rate_adj_direct(
   .data,
   .std,
   .keys = NULL,
-  name_var = "name",
-  value_var = "value",
-  events_label = "events",
-  population_label = "population"
+  .name_var = "name",
+  .value_var = "value",
+  .events_label = "events",
+  .population_label = "population",
+  .progress = TRUE
 )
 }
 \arguments{
@@ -21,13 +22,15 @@ rate_adj_direct(
 
 \item{.keys}{Optional. A character vector with grouping variables, like year and region code.}
 
-\item{name_var}{Variable containing variable names. Defaults to \code{name}.}
+\item{.name_var}{Variable containing variable names. Defaults to \code{name}.}
 
-\item{value_var}{Variable containing values. Defaults to \code{value}.}
+\item{.value_var}{Variable containing values. Defaults to \code{value}.}
 
-\item{events_label}{Label used for events at the \code{name_var} variable. Defaults to \code{events}.}
+\item{.events_label}{Label used for events at the \code{name_var} variable. Defaults to \code{events}.}
 
-\item{population_label}{Label used for population at the \code{name_var} variable. Defautls to \code{population}.}
+\item{.population_label}{Label used for population at the \code{name_var} variable. Defautls to \code{population}.}
+
+\item{.progress}{Whether to show a progress bar. Defaults to \code{TRUE}.}
 }
 \value{
 A tibble with crude and adjusted rate, lower and upper confidence intervals.
