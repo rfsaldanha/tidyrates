@@ -46,9 +46,7 @@ rate_adj_direct <- function(.data, .std, .keys = NULL,
   checkmate::assert_choice(.value_var, names(.data))
   checkmate::assert_choice(.age_group_var, names(.data))
   checkmate::assert_choice(.age_group_var, names(.std))
-
   checkmate::assert_choice(.age_group_pop_var, names(.std))
-
   checkmate::assert_choice(.events_label, unique(get({.name_var}, .data)))
   checkmate::assert_choice(.population_label, unique(get({.name_var}, .data)))
 
