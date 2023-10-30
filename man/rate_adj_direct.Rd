@@ -36,7 +36,10 @@ rate_adj_direct(
 A tibble with crude and adjusted rate, lower and upper confidence intervals.
 }
 \description{
-This function computes direct adjusted rates and confidence intervals with tidy data in a tibble.
+Computes direct adjusted rates and confidence intervals.
+}
+\details{
+This functions wraps the \code{epitools} \link[epitools]{ageadjust.direct} function to compute direct adjusted rates and "exact" confidence intervals using \code{tibble} objects with multiple grouping keys.
 }
 \examples{
 standard_pop <- c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
