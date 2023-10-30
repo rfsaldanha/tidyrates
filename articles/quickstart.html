@@ -80,7 +80,7 @@ mortality) among groups that have different age distributions.</p>
 <p>Some packages like the <code>epitools</code> compute these adjusted
 rates. This package functions wraps the <code>epitools</code> functions
 in a tidy way, allowing the computation of age adjusted rates for
-several groups using key variables, like year and regions by
+several groups using key variables, like year and regions for
 example.</p>
 <div class="section level2">
 <h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
@@ -104,8 +104,8 @@ example.</p>
 <div class="section level3">
 <h3 id="events-and-population-data">Events and population data<a class="anchor" aria-label="anchor" href="#events-and-population-data"></a>
 </h3>
-<p>For example, let’s use the Fleiss dataset quoted by the
-<code>epitools</code> package (Fleiss, 1981, p. 249 ).</p>
+<p>Let’s use the Fleiss dataset, quoted by the <code>epitools</code>
+package (Fleiss, 1981, p. 249 ).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">population</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">230061</span>, <span class="fl">329449</span>, <span class="fl">114920</span>, <span class="fl">39487</span>, <span class="fl">14208</span>, <span class="fl">3052</span>,</span>
 <span><span class="fl">72202</span>, <span class="fl">326701</span>, <span class="fl">208667</span>, <span class="fl">83228</span>, <span class="fl">28466</span>, <span class="fl">5375</span>, <span class="fl">15050</span>, <span class="fl">175702</span>,</span>
@@ -142,10 +142,10 @@ example.</p>
 <span><span class="co">#&gt; 35-39        39  82 108 137 262   628</span></span>
 <span><span class="co">#&gt; 40 and over  25  39  75  96 295   530</span></span></code></pre></div>
 <p>The Fleiss data present events (<code>count</code> object) and
-population (<code>population</code> object) for 6 age groups and five
-different groups (1 to 5+).</p>
-<p>The <code>tidyrates</code> package present the same Fleiss dataset as
-a tibble.</p>
+population (<code>population</code> object) for six age groups on five
+different groups (from 1 to 5+).</p>
+<p>The <code>tidyrates</code> package present the same Fleiss data in a
+tidy way, with a tibble in long format.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fleiss_data</span></span>
 <span><span class="co">#&gt;       key   age_group       name  value</span></span>
@@ -212,12 +212,12 @@ a tibble.</p>
 <p>The <code>key</code> variable refers to the groups,
 <code>age_group</code> to the age groups, <code>name</code> separates
 the <code>values</code> into events and population.</p>
-<p>You may use this same structure for your use case data.</p>
+<p><em>You may use this same structure for your use case data.</em></p>
 </div>
 <div class="section level3">
 <h3 id="reference-population-data">Reference population data<a class="anchor" aria-label="anchor" href="#reference-population-data"></a>
 </h3>
-<p>The Fleiss example present uses the average population as standard
+<p>The Fleiss example uses the average population as standard population
 reference.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">standard</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">population</span><span class="op">[</span>,<span class="op">-</span><span class="fl">6</span><span class="op">]</span>, <span class="fl">1</span>, <span class="va">mean</span><span class="op">)</span></span>
@@ -238,7 +238,7 @@ variables: age group and population.</p>
 </h2>
 <p>To use the direct adjustment procedure, <code>tidyrate</code> present
 the <code>rate_adj_direct</code> function. The <code>.data</code>
-argument must be a tibble with the events and population data and the
+argument must be a tibble with the events and population data, and the
 <code>.std</code> argument must be standard population tibble. The
 <code>.keys</code> argument must point to the groups variables on the
 <code>.data</code> tibble.</p>
