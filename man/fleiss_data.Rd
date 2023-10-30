@@ -11,6 +11,6 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 fleiss_data
 }
 \description{
-Fleiss dataset from \code{epitools} package examples, with counts and population per age group in tidy format.
+Fleiss dataset from \code{epitools} package examples, with event counts and population per age group in tidy format.
 }
 \keyword{datasets}
