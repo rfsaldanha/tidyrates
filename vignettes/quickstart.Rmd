@@ -1,0 +1,109 @@
+---
+title: "Quick start guide"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{quickstart}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+The objective of this package is to compute rates adjusted by a reference population or other rate. This is a very common procedure in epidemiology, allowing the comparison of rates of a event (like mortality) among groups that have different age distributions. 
+
+Some packages like the `epitools` compute these adjusted rates. This package functions wraps the `epitools` functions in a tidy way, allowing the computation of age adjusted rates for several groups using key variables, like year and regions by example.
+
+## Setup
+
+### Installing the package
+
+```{r eval=FALSE}
+devtools::install_github("rfsaldanha/tidyrates")
+```
+
+### Load the package
+
+```{r}
+library(tidyrates)
+```
+
+## Data
+
+### Events and population data
+
+For example, let's use the Fleiss dataset quoted by the `epitools ` package (Fleiss, 1981, p. 249 ). 
+
+```{r}
+population <- c(230061, 329449, 114920, 39487, 14208, 3052,
+72202, 326701, 208667, 83228, 28466, 5375, 15050, 175702,
+207081, 117300, 45026, 8660, 2293, 68800, 132424, 98301, 
+46075, 9834, 327, 30666, 123419, 149919, 104088, 34392, 
+319933, 931318, 786511, 488235, 237863, 61313)
+
+population <- matrix(population, 6, 6, 
+dimnames = list(c("Under 20", "20-24", "25-29", "30-34", "35-39",
+"40 and over"), c("1", "2", "3", "4", "5+", "Total")))
+
+count <- c(107, 141, 60, 40, 39, 25, 25, 150, 110, 84, 82, 39,
+3, 71, 114, 103, 108, 75, 1, 26, 64, 89, 137, 96, 0, 8, 63, 112,
+262, 295, 136, 396, 411, 428, 628, 530)
+count <- matrix(count, 6, 6, 
+dimnames = list(c("Under 20", "20-24", "25-29", "30-34", "35-39",
+"40 and over"), c("1", "2", "3", "4", "5+", "Total")))
+```
+
+```{r}
+population
+```
+
+```{r}
+count
+```
+
+The Fleiss data present events (`count` object) and population (`population` object) for 6 age groups and five different groups (1 to 5+).
+
+The `tidyrates` package present the same Fleiss dataset as a tibble.
+
+```{r}
+fleiss_data
+```
+
+The `key` variable refers to the groups, `age_group` to the age groups, `name` separates the `values` into events and population. 
+
+You may use this same structure for your use case data.
+
+### Reference population data
+
+The Fleiss example present uses the average population as standard reference. 
+
+```{r}
+standard<-apply(population[,-6], 1, mean)
+standard
+```
+
+Using `tidyrates`, we must supply a tibble with two variables: age group and population.
+
+```{r}
+standard_pop <- tibble::tibble(
+    age_group = c("Under 20", "20-24", "25-29", "30-34", "35-39", "40 and over"),
+    pop = c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
+  )
+```
+
+
+## Direct adjusted rate
+
+To use the direct adjustment procedure, `tidyrate` present the `rate_adj_direct` function. The `.data` argument must be a tibble with the events and population data and the `.std` argument must be standard population tibble. The `.keys` argument must point to the groups variables on the `.data` tibble.
+
+The `rate_adj_direct` will compute the crude rate, adjusted rate and exact confidence intervals for each group.
+
+```{r}
+rate_adj_direct(fleiss_data, .std = standard_pop, .keys = "key")
+```
+
