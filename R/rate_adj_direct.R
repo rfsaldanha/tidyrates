@@ -9,6 +9,8 @@
 #' @param .keys Optional. A character vector with grouping variables, like year and region code.
 #' @param .name_var Variable containing variable names. Defaults to `name`.
 #' @param .value_var Variable containing values. Defaults to `value`.
+#' @param .age_group_var Variable name of age groups. Defaults to `age_group`.
+#' @param .age_group_pop_var Variable name of population size on `.std`. Defaults to `pop`.
 #' @param .events_label Label used for events at the `name_var` variable. Defaults to `events`.
 #' @param .population_label Label used for population at the `name_var` variable. Defautls to `population`.
 #' @param .progress Whether to show a progress bar. Defaults to `TRUE`.
@@ -21,8 +23,11 @@
 #' @examples
 #' standard_pop <- c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
 #' rate_adj_direct(fleiss_data, .std = standard_pop)
-rate_adj_direct <- function(.data, .std, .keys = NULL,
-                            .name_var = "name", .value_var = "value",
+rate_adj_direct <- function(.data,
+                            .std,
+                            .keys = NULL,
+                            .name_var = "name",
+                            .value_var = "value",
                             .age_group_var = "age_group",
                             .age_group_pop_var = "pop",
                             .events_label = "events",

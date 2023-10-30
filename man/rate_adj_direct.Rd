@@ -10,6 +10,8 @@ rate_adj_direct(
   .keys = NULL,
   .name_var = "name",
   .value_var = "value",
+  .age_group_var = "age_group",
+  .age_group_pop_var = "pop",
   .events_label = "events",
   .population_label = "population",
   .progress = TRUE
@@ -25,6 +27,10 @@ rate_adj_direct(
 \item{.name_var}{Variable containing variable names. Defaults to \code{name}.}
 
 \item{.value_var}{Variable containing values. Defaults to \code{value}.}
+
+\item{.age_group_var}{Variable name of age groups. Defaults to \code{age_group}.}
+
+\item{.age_group_pop_var}{Variable name of population size on \code{.std}. Defaults to \code{pop}.}
 
 \item{.events_label}{Label used for events at the \code{name_var} variable. Defaults to \code{events}.}
 
