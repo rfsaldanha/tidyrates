@@ -1,10 +1,10 @@
 Package: tidyrates
-Title: What the Package Does (One Line, Title Case)
+Title: Computes adjusted rates and other epidemiological indicators in a tidy way
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Raphael", "Saldanha", , "raphael.de-freitas-saldanha@inria.fr", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-0652-8466"))
+Description: A tidy wrapper of epitools package functions to compute adjusted rates and other epidemiological indicators.
 License: MIT + file LICENSE
 Suggests: 
     knitr,
