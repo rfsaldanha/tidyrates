@@ -46,8 +46,15 @@ Computes direct adjusted rates and confidence intervals.
 }
 \details{
 This functions wraps the \code{epitools} \link[epitools]{ageadjust.direct} function to compute direct adjusted rates and "exact" confidence intervals using \code{tibble} objects with multiple grouping keys.
+
+A tibble (\code{.data}) must be informed containing key variables like year and region code, and population and and events count (e.g. cases) per age group. Check the \code{fleiss_data} for an example.
+
+A tibble (\code{.std}) must be also supplied containing the age groups and population size. By default, this tibble has two variables, named \code{age_group} and \code{pop}.
 }
 \examples{
-standard_pop <- c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
+standard_pop <- tibble::tibble(
+   age_group = c("Under 20", "20-24", "25-29", "30-34", "35-39", "40 and over"),
+   pop = c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
+ )
 rate_adj_direct(fleiss_data, .std = standard_pop)
 }
