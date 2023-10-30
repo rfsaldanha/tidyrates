@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 The objective of this package is to compute rates adjusted by a reference population or other rate. This is a very common procedure in epidemiology, allowing the comparison of rates of a event (like mortality) among groups that have different age distributions. 
 
-Some packages like the `epitools` compute these adjusted rates. This package functions wraps the `epitools` functions in a tidy way, allowing the computation of age adjusted rates for several groups using key variables, like year and regions by example.
+Some packages like the `epitools` compute these adjusted rates. This package functions wraps the `epitools` functions in a tidy way, allowing the computation of age adjusted rates for several groups using key variables, like year and regions for example.
 
 ## Setup
 
@@ -37,7 +37,7 @@ library(tidyrates)
 
 ### Events and population data
 
-For example, let's use the Fleiss dataset quoted by the `epitools ` package (Fleiss, 1981, p. 249 ). 
+Let's use the Fleiss dataset, quoted by the `epitools ` package (Fleiss, 1981, p. 249 ). 
 
 ```{r}
 population <- c(230061, 329449, 114920, 39487, 14208, 3052,
@@ -66,9 +66,9 @@ population
 count
 ```
 
-The Fleiss data present events (`count` object) and population (`population` object) for 6 age groups and five different groups (1 to 5+).
+The Fleiss data present events (`count` object) and population (`population` object) for six age groups on five different groups (from 1 to 5+).
 
-The `tidyrates` package present the same Fleiss dataset as a tibble.
+The `tidyrates` package present the same Fleiss data in a tidy way, with a tibble in long format.
 
 ```{r}
 fleiss_data
@@ -76,11 +76,11 @@ fleiss_data
 
 The `key` variable refers to the groups, `age_group` to the age groups, `name` separates the `values` into events and population. 
 
-You may use this same structure for your use case data.
+*You may use this same structure for your use case data.*
 
 ### Reference population data
 
-The Fleiss example present uses the average population as standard reference. 
+The Fleiss example uses the average population as standard population reference. 
 
 ```{r}
 standard<-apply(population[,-6], 1, mean)
@@ -99,7 +99,7 @@ standard_pop <- tibble::tibble(
 
 ## Direct adjusted rate
 
-To use the direct adjustment procedure, `tidyrate` present the `rate_adj_direct` function. The `.data` argument must be a tibble with the events and population data and the `.std` argument must be standard population tibble. The `.keys` argument must point to the groups variables on the `.data` tibble.
+To use the direct adjustment procedure, `tidyrate` present the `rate_adj_direct` function. The `.data` argument must be a tibble with the events and population data, and the `.std` argument must be standard population tibble. The `.keys` argument must point to the groups variables on the `.data` tibble.
 
 The `rate_adj_direct` will compute the crude rate, adjusted rate and exact confidence intervals for each group.
 
