@@ -2,3 +2,6 @@ url: https://rfsaldanha.github.io/tidyrates/
 template:
   bootstrap: 5
 
+navbar:
+  structure:
+    right: [github]
