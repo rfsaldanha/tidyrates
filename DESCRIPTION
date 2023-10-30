@@ -19,6 +19,7 @@ Imports:
     forcats,
     magrittr,
     purrr,
+    rlang,
     tibble,
     tidyr
 Depends: 
