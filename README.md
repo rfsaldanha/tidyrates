@@ -11,7 +11,9 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/tidyrates)](https://CRAN.R-project.org/package=tidyrates)
 <!-- badges: end -->
 
-The goal of tidyrates is to …
+The goal of tidyrates is to compute adjusted rates and other
+epidemiological indicators in a tidy way, wrapping functions from the
+`epitools` package.
 
 ## Installation
 
@@ -28,9 +30,21 @@ devtools::install_github("rfsaldanha/tidyrates")
 ``` r
 library(tidyrates)
 
-standard_population <- c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
+head(fleiss_data)
+#>   key age_group       name  value
+#> 1  k1  Under 20 population 230061
+#> 2  k1  Under 20     events    107
+#> 3  k1     20-24 population 329449
+#> 4  k1     20-24     events    141
+#> 5  k1     25-29 population 114920
+#> 6  k1     25-29     events     60
 
-rate_adj_direct(fleiss_data, .std = standard_population, .keys = "key")
+standard_pop <- tibble::tibble(
+    age_group = c("Under 20", "20-24", "25-29", "30-34", "35-39", "40 and over"),
+    pop = c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
+  )
+
+rate_adj_direct(fleiss_data, .std = standard_pop, .keys = "key")
 #> # A tibble: 5 × 5
 #>   key    crude.rate adj.rate      lci      uci
 #>   <chr>       <dbl>    <dbl>    <dbl>    <dbl>

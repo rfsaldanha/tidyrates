@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/tidyrates)](https://CRAN.R-project.org/package=tidyrates)
 <!-- badges: end -->
 
-The goal of tidyrates is to ...
+The goal of tidyrates is to compute adjusted rates and other epidemiological indicators in a tidy way, wrapping functions from the `epitools` package.
 
 ## Installation
 
@@ -35,6 +35,8 @@ devtools::install_github("rfsaldanha/tidyrates")
 
 ```{r example}
 library(tidyrates)
+
+head(fleiss_data)
 
 standard_pop <- tibble::tibble(
     age_group = c("Under 20", "20-24", "25-29", "30-34", "35-39", "40 and over"),
