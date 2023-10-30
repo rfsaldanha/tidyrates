@@ -25,8 +25,32 @@ rate_adj_direct <- function(.data, .std, .keys = NULL,
                             .name_var = "name", .value_var = "value",
                             .age_group_var = "age_group",
                             .age_group_pop_var = "pop",
-                            .events_label = "events", .population_label = "population",
+                            .events_label = "events",
+                            .population_label = "population",
                             .progress = TRUE){
+  # Assert type
+  checkmate::assert_tibble(.data)
+  checkmate::assert_tibble(.std)
+  checkmate::assert_vector(.keys, null.ok = TRUE)
+  checkmate::assert_string(.name_var)
+  checkmate::assert_string(.value_var)
+  checkmate::assert_string(.age_group_var)
+  checkmate::assert_string(.age_group_pop_var)
+  checkmate::assert_string(.events_label)
+  checkmate::assert_string(.population_label)
+  checkmate::assert_logical(.progress)
+
+  # Assert content
+  for(f in .keys) checkmate::assert_choice(f, names(.data))
+  checkmate::assert_choice(.name_var, names(.data))
+  checkmate::assert_choice(.value_var, names(.data))
+  checkmate::assert_choice(.age_group_var, names(.data))
+  checkmate::assert_choice(.age_group_var, names(.std))
+
+  checkmate::assert_choice(.age_group_pop_var, names(.std))
+
+  checkmate::assert_choice(.events_label, unique(get({.name_var}, .data)))
+  checkmate::assert_choice(.population_label, unique(get({.name_var}, .data)))
 
   # Group by keys, if available
   if(!is.null(.keys)){
