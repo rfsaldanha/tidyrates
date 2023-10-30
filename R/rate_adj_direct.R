@@ -1,6 +1,8 @@
 #' Compute direct adjusted rates with tibbles
 #'
-#' This function computes direct adjusted rates and confidence intervals with tidy data in a tibble.
+#' Computes direct adjusted rates and confidence intervals.
+#'
+#' This functions wraps the `epitools` \link[epitools]{ageadjust.direct} function to compute direct adjusted rates and "exact" confidence intervals using `tibble` objects with multiple grouping keys.
 #'
 #' @param .data A tibble containing events counts and population per groups (e.g. age groups)
 #' @param .std A vector with standard population values for each group
@@ -27,6 +29,10 @@ rate_adj_direct <- function(.data, .std, .keys = NULL,
     .data <- .data %>%
       dplyr::group_by(dplyr::across(dplyr::all_of(.keys)))
   }
+
+  # Assure age group factor order
+  .data <- .data %>%
+    dplyr::mutate(age_group = forcats::fct_relevel(age_group, sort))
 
   # Pivot variables and split to list
   res_list <- .data %>%
