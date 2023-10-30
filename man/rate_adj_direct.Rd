@@ -39,6 +39,6 @@ A tibble with crude and adjusted rate, lower and upper confidence intervals.
 This function computes direct adjusted rates and confidence intervals with tidy data in a tibble.
 }
 \examples{
-standard <- c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
-rate_adj_direct(fleiss_data, .std = standard)
+standard_pop <- c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
+rate_adj_direct(fleiss_data, .std = standard_pop)
 }
