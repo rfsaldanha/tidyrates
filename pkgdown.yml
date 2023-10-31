@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   quickstart: quickstart.html
-last_built: 2023-10-31T14:07Z
+last_built: 2023-10-31T14:10Z
 urls:
   reference: https://rfsaldanha.github.io/tidyrates/reference
   article: https://rfsaldanha.github.io/tidyrates/articles
