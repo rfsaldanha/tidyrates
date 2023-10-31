@@ -11,7 +11,7 @@ rate_adj_direct(
   .name_var = "name",
   .value_var = "value",
   .age_group_var = "age_group",
-  .age_group_pop_var = "pop",
+  .age_group_pop_var = "population",
   .events_label = "events",
   .population_label = "population",
   .progress = TRUE
@@ -54,7 +54,7 @@ A tibble (\code{.std}) must be also supplied containing the age groups and popul
 \examples{
 standard_pop <- tibble::tibble(
    age_group = c("Under 20", "20-24", "25-29", "30-34", "35-39", "40 and over"),
-   pop = c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
+   population = c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
  )
 rate_adj_direct(fleiss_data, .std = standard_pop)
 }
