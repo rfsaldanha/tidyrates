@@ -33,7 +33,7 @@ devtools::install_github("rfsaldanha/tidyrates")
 library(tidyrates)
 ```
 
-## Data
+## Direct adjusted rate
 
 ### Events and population data
 
@@ -97,13 +97,64 @@ standard_pop <- tibble::tibble(
 ```
 
 
-## Direct adjusted rate
+### Rate computation
 
-To use the direct adjustment procedure, `tidyrate` present the `rate_adj_direct` function. The `.data` argument must be a tibble with the events and population data, and the `.std` argument must be standard population tibble. The `.keys` argument must point to the groups variables on the `.data` tibble.
+To use the direct adjustment procedure, `tidyrate` present the `rate_adj_direct` function. The `.data` argument must be a tibble with the events and population data, and the `.std` argument must be standard population tibble. The `.keys` argument must point to grouping variables on the `.data` tibble, if available.
 
 The `rate_adj_direct` will compute the crude rate, adjusted rate and exact confidence intervals for each group.
 
 ```{r}
 rate_adj_direct(fleiss_data, .std = standard_pop, .keys = "key")
 ```
+
+
+## Indirect adjusted rate
+
+### Events and population data
+
+Let's use the Selvin dataset, quoted by the `epitools ` package (Selvin, 2004).
+
+```{r}
+dth40 <- c(45, 201, 320, 670, 1126, 3160, 9723, 17935,
+22179, 13461, 2238)
+
+pop40 <- c(906897, 3794573, 10003544, 10629526, 9465330,
+8249558, 7294330, 5022499, 2920220, 1019504, 142532)
+```
+
+
+The `tidyrates` present the same dataset in a tidy way.
+
+```{r}
+selvin_data_1940
+```
+
+
+### Events and population reference data
+
+```{r}
+dth60 <- c(141, 926, 1253, 1080, 1869, 4891, 14956, 30888,
+41725, 26501, 5928)
+
+pop60 <- c(1784033, 7065148, 15658730, 10482916, 9939972,
+10563872, 9114202, 6850263, 4702482, 1874619, 330915)
+```
+
+The `tidyrates` present the same dataset in a tidy way.
+
+```{r}
+selvin_data_1960
+```
+
+
+### Rate computation
+
+To use the indirect adjustment procedure, `tidyrate` present the `rate_adj_indirect` function. The `.data` argument must be a tibble with the events and population data, and the `.std` argument must be also a tibble with the events and population data. The `.keys` argument must point to grouping variables on the `.data` tibble, if available.
+
+The `rate_adj_indirect` will compute the crude rate, adjusted rate and exact confidence intervals for each group.
+
+```{r}
+rate_adj_indirect(selvin_data_1940, selvin_data_1960)
+```
+
 
