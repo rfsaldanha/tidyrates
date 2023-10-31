@@ -99,7 +99,7 @@ example.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+<h2 id="direct-adjusted-rate">Direct adjusted rate<a class="anchor" aria-label="anchor" href="#direct-adjusted-rate"></a>
 </h2>
 <div class="section level3">
 <h3 id="events-and-population-data">Events and population data<a class="anchor" aria-label="anchor" href="#events-and-population-data"></a>
@@ -232,16 +232,15 @@ variables: age group and population.</p>
 <span>    population <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">63986.6</span>, <span class="fl">186263.6</span>, <span class="fl">157302.2</span>, <span class="fl">97647.0</span>, <span class="fl">47572.6</span>, <span class="fl">12262.6</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 </div>
-</div>
-<div class="section level2">
-<h2 id="direct-adjusted-rate">Direct adjusted rate<a class="anchor" aria-label="anchor" href="#direct-adjusted-rate"></a>
-</h2>
+<div class="section level3">
+<h3 id="rate-computation">Rate computation<a class="anchor" aria-label="anchor" href="#rate-computation"></a>
+</h3>
 <p>To use the direct adjustment procedure, <code>tidyrate</code> present
 the <code>rate_adj_direct</code> function. The <code>.data</code>
 argument must be a tibble with the events and population data, and the
 <code>.std</code> argument must be standard population tibble. The
-<code>.keys</code> argument must point to the groups variables on the
-<code>.data</code> tibble.</p>
+<code>.keys</code> argument must point to grouping variables on the
+<code>.data</code> tibble, if available.</p>
 <p>The <code>rate_adj_direct</code> will compute the crude rate,
 adjusted rate and exact confidence intervals for each group.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -254,6 +253,88 @@ adjusted rate and exact confidence intervals for each group.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> k3       0.000<span style="text-decoration: underline;">833</span> 0.000<span style="text-decoration: underline;">851</span> 0.000<span style="text-decoration: underline;">772</span> 0.000<span style="text-decoration: underline;">942</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> k4       0.001<span style="text-decoration: underline;">15</span>  0.000<span style="text-decoration: underline;">927</span> 0.000<span style="text-decoration: underline;">800</span> 0.001<span style="text-decoration: underline;">15</span> </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> k5plus   0.001<span style="text-decoration: underline;">67</span>  0.000<span style="text-decoration: underline;">755</span> 0.000<span style="text-decoration: underline;">677</span> 0.001<span style="text-decoration: underline;">88</span></span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="indirect-adjusted-rate">Indirect adjusted rate<a class="anchor" aria-label="anchor" href="#indirect-adjusted-rate"></a>
+</h2>
+<div class="section level3">
+<h3 id="events-and-population-data-1">Events and population data<a class="anchor" aria-label="anchor" href="#events-and-population-data-1"></a>
+</h3>
+<p>Let’s use the Selvin dataset, quoted by the <code>epitools</code>
+package (Selvin, 2004).</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dth40</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">45</span>, <span class="fl">201</span>, <span class="fl">320</span>, <span class="fl">670</span>, <span class="fl">1126</span>, <span class="fl">3160</span>, <span class="fl">9723</span>, <span class="fl">17935</span>,</span>
+<span><span class="fl">22179</span>, <span class="fl">13461</span>, <span class="fl">2238</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">pop40</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">906897</span>, <span class="fl">3794573</span>, <span class="fl">10003544</span>, <span class="fl">10629526</span>, <span class="fl">9465330</span>,</span>
+<span><span class="fl">8249558</span>, <span class="fl">7294330</span>, <span class="fl">5022499</span>, <span class="fl">2920220</span>, <span class="fl">1019504</span>, <span class="fl">142532</span><span class="op">)</span></span></code></pre></div>
+<p>The <code>tidyrates</code> present the same dataset in a tidy
+way.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">selvin_data_1940</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 22 × 3</span></span></span>
+<span><span class="co">#&gt;    age_group name   value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> &lt;1        events    45</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1-4       events   201</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 5-14      events   320</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 15-24     events   670</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 25-34     events  <span style="text-decoration: underline;">1</span>126</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 35-44     events  <span style="text-decoration: underline;">3</span>160</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 45-54     events  <span style="text-decoration: underline;">9</span>723</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 55-64     events <span style="text-decoration: underline;">17</span>935</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 65-74     events <span style="text-decoration: underline;">22</span>179</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 75-84     events <span style="text-decoration: underline;">13</span>461</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 12 more rows</span></span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="events-and-population-reference-data">Events and population reference data<a class="anchor" aria-label="anchor" href="#events-and-population-reference-data"></a>
+</h3>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dth60</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">141</span>, <span class="fl">926</span>, <span class="fl">1253</span>, <span class="fl">1080</span>, <span class="fl">1869</span>, <span class="fl">4891</span>, <span class="fl">14956</span>, <span class="fl">30888</span>,</span>
+<span><span class="fl">41725</span>, <span class="fl">26501</span>, <span class="fl">5928</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">pop60</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1784033</span>, <span class="fl">7065148</span>, <span class="fl">15658730</span>, <span class="fl">10482916</span>, <span class="fl">9939972</span>,</span>
+<span><span class="fl">10563872</span>, <span class="fl">9114202</span>, <span class="fl">6850263</span>, <span class="fl">4702482</span>, <span class="fl">1874619</span>, <span class="fl">330915</span><span class="op">)</span></span></code></pre></div>
+<p>The <code>tidyrates</code> present the same dataset in a tidy
+way.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">selvin_data_1960</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 22 × 3</span></span></span>
+<span><span class="co">#&gt;    age_group name   value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> &lt;1        events   141</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1-4       events   926</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 5-14      events  <span style="text-decoration: underline;">1</span>253</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 15-24     events  <span style="text-decoration: underline;">1</span>080</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 25-34     events  <span style="text-decoration: underline;">1</span>869</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 35-44     events  <span style="text-decoration: underline;">4</span>891</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 45-54     events <span style="text-decoration: underline;">14</span>956</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 55-64     events <span style="text-decoration: underline;">30</span>888</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 65-74     events <span style="text-decoration: underline;">41</span>725</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 75-84     events <span style="text-decoration: underline;">26</span>501</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 12 more rows</span></span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="rate-computation-1">Rate computation<a class="anchor" aria-label="anchor" href="#rate-computation-1"></a>
+</h3>
+<p>To use the indirect adjustment procedure, <code>tidyrate</code>
+present the <code>rate_adj_indirect</code> function. The
+<code>.data</code> argument must be a tibble with the events and
+population data, and the <code>.std</code> argument must be also a
+tibble with the events and population data. The <code>.keys</code>
+argument must point to grouping variables on the <code>.data</code>
+tibble, if available.</p>
+<p>The <code>rate_adj_indirect</code> will compute the crude rate,
+adjusted rate and exact confidence intervals for each group.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/rate_adj_indirect.html">rate_adj_indirect</a></span><span class="op">(</span><span class="va">selvin_data_1940</span>, <span class="va">selvin_data_1960</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
+<span><span class="co">#&gt;   crude.rate adj.rate     lci     uci</span></span>
+<span><span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    0.001<span style="text-decoration: underline;">20</span>  0.001<span style="text-decoration: underline;">20</span> 0.001<span style="text-decoration: underline;">19</span> 0.001<span style="text-decoration: underline;">20</span></span></span></code></pre></div>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
