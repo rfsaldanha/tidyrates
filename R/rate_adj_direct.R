@@ -14,7 +14,7 @@
 #' @param .name_var Variable containing variable names. Defaults to `name`.
 #' @param .value_var Variable containing values. Defaults to `value`.
 #' @param .age_group_var Variable name of age groups. Defaults to `age_group`.
-#' @param .age_group_pop_var Variable name of population size on `.std`. Defaults to `pop`.
+#' @param .age_group_pop_var Variable name of population size on `.std`. Defaults to `population`.
 #' @param .events_label Label used for events at the `name_var` variable. Defaults to `events`.
 #' @param .population_label Label used for population at the `name_var` variable. Defautls to `population`.
 #' @param .progress Whether to show a progress bar. Defaults to `TRUE`.

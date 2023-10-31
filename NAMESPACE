@@ -2,5 +2,6 @@
 
 export("%>%")
 export(rate_adj_direct)
+export(rate_adj_indirect)
 importFrom(magrittr,"%>%")
 importFrom(rlang,":=")
