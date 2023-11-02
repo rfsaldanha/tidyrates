@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/tidyrates)](https://CRAN.R-project.org/package=tidyrates)
+[![R-CMD-check](https://github.com/rfsaldanha/tidyrates/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rfsaldanha/tidyrates/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of tidyrates is to compute adjusted rates and other epidemiological indicators in a tidy way, wrapping functions from the `epitools` package.
@@ -40,7 +41,7 @@ head(fleiss_data)
 
 standard_pop <- tibble::tibble(
     age_group = c("Under 20", "20-24", "25-29", "30-34", "35-39", "40 and over"),
-    pop = c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
+    population = c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
   )
 
 rate_adj_direct(fleiss_data, .std = standard_pop, .keys = "key")
