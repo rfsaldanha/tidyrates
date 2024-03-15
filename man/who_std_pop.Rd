@@ -5,7 +5,7 @@
 \alias{who_std_pop}
 \title{Standard population reference table}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 21 rows and 1 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 21 rows and 2 columns.
 }
 \usage{
 who_std_pop
