@@ -4,7 +4,7 @@ Version: 0.0.1
 Authors@R: 
     person("Raphael", "Saldanha", , "raphael.de-freitas-saldanha@inria.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-0652-8466"))
-Description: Compute adjusted rates and other epidemiological indicators in a tidy way, wrapping functions from the epitools package.
+Description: Compute age-adjusted rates by direct and indirect methods and other epidemiological indicators in a tidy way, wrapping functions from the 'epitools' package.
 License: MIT + file LICENSE
 Suggests: 
     knitr,
