@@ -25,11 +25,17 @@ The goal of tidyrates is to compute adjusted rates and other epidemiological ind
 
 ## Installation
 
-You can install the development version of tidyrates from [GitHub](https://github.com/rfsaldanha/tidyrates) with:
+You can install the release version of tidyrates from CRAN:
 
-``` r
-# install.packages("devtools")
-devtools::install_github("rfsaldanha/tidyrates")
+```{r eval=FALSE}
+install.packages("tidyrates")
+```
+
+Or the development version from [GitHub](https://github.com/rfsaldanha/tidyrates):
+
+```{r eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("rfsaldanha/tidyrates")
 ```
 
 ## Example
