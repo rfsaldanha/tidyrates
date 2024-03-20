@@ -29,3 +29,4 @@ Depends:
 LazyData: true
 VignetteBuilder: knitr
 URL: https://rfsaldanha.github.io/tidyrates/
+BugReports: https://github.com/rfsaldanha/tidyrates/issues
