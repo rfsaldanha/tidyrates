@@ -151,7 +151,7 @@ selvin_data_1960
 
 To use the indirect adjustment procedure, `tidyrate` present the `rate_adj_indirect` function. The `.data` argument must be a tibble with the events and population data, and the `.std` argument must be also a tibble with the events and population data. The `.keys` argument must point to grouping variables on the `.data` tibble, if available.
 
-The `rate_adj_indirect` will compute the crude rate, adjusted rate and confidence intervals for each group.
+The `rate_adj_indirect` will compute the crude rate, adjusted rate and confidence intervals for each group. Reference age-specific rates and the reference crude rate are computed from `.std`. Supply its age groups in the same row order as in each group of `.data`.
 
 ```{r}
 rate_adj_indirect(selvin_data_1940, selvin_data_1960)

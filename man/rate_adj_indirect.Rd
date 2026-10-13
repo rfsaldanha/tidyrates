@@ -2,7 +2,7 @@
 % Please edit documentation in R/rate_adj_indirect.R
 \name{rate_adj_indirect}
 \alias{rate_adj_indirect}
-\title{Compute direct adjusted rates with tibbles}
+\title{Compute indirect adjusted rates with tibbles}
 \usage{
 rate_adj_indirect(
   .data,
@@ -20,7 +20,7 @@ rate_adj_indirect(
 \arguments{
 \item{.data}{A tibble containing events counts and population per groups (e.g. age groups)}
 
-\item{.std}{A vector with standard population values for each group}
+\item{.std}{A tibble with reference event counts and population values for each age group, in the same age-group row order as each group in \code{.data}.}
 
 \item{.keys}{Optional. A character vector with grouping variables, like year and region code.}
 

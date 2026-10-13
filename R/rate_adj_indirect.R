@@ -1,4 +1,4 @@
-#' Compute direct adjusted rates with tibbles
+#' Compute indirect adjusted rates with tibbles
 #'
 #' Computes indirect adjusted rates and confidence intervals.
 #'
@@ -9,7 +9,7 @@
 #' A tibble (`.std`) must be also supplied containing the age groups, events and population size. By default, this tibble has three variables, named `age_group`, `name` and `value`. Check the `selvin_data_1940` for an example.
 #'
 #' @param .data A tibble containing events counts and population per groups (e.g. age groups)
-#' @param .std A vector with standard population values for each group
+#' @param .std A tibble with reference event counts and population values for each age group, in the same age-group row order as each group in `.data`.
 #' @param .keys Optional. A character vector with grouping variables, like year and region code.
 #' @param .name_var Variable containing variable names. Defaults to `name`.
 #' @param .value_var Variable containing values. Defaults to `value`.
@@ -79,7 +79,7 @@ rate_adj_indirect <- function(.data,
     dplyr::group_split(.keep = TRUE)
 
   # Pivot variables from reference events and population
-  std_list <- .data %>%
+  std_list <- .std %>%
     tidyr::pivot_wider(names_from = .name_var, values_from = .value_var)
 
   # Map
