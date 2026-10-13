@@ -2,7 +2,7 @@
 #'
 #' Computes direct adjusted rates and confidence intervals.
 #'
-#' This functions wraps the `epitools` \link[epitools]{ageadjust.direct} function to compute direct adjusted rates and "exact" confidence intervals using `tibble` objects with multiple grouping keys.
+#' Computes direct adjusted rates and 95% Fay-Feuer gamma confidence intervals using `tibble` objects with multiple grouping keys and internal statistical calculations.
 #'
 #' A tibble (`.data`) must be informed containing key variables like year and region code, and population and and events count (e.g. cases) per age group. Check the `fleiss_data` for an example.
 #'
@@ -85,7 +85,7 @@ rate_adj_direct <- function(.data,
   res <- purrr::map(.x = res_list, .f = function(x, std = get({.age_group_pop_var}, .std)){
     tibble::as_tibble(
       t(
-        epitools::ageadjust.direct(
+        .rate_direct(
           count = get({.events_label}, x),
           pop = get({.population_label}, x),
           stdpop = std

@@ -13,8 +13,7 @@ status](https://www.r-pkg.org/badges/version/tidyrates)](https://CRAN.R-project.
 <!-- badges: end -->
 
 The goal of tidyrates is to compute adjusted rates and other
-epidemiological indicators in a tidy way, wrapping functions from the
-`epitools` package.
+epidemiological indicators in a tidy way, using internal statistical calculations.
 
 ## Installation
 

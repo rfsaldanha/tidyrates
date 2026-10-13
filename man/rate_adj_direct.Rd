@@ -45,7 +45,7 @@ A tibble with crude and adjusted rate, lower and upper confidence intervals.
 Computes direct adjusted rates and confidence intervals.
 }
 \details{
-This functions wraps the \code{epitools} \link[epitools]{ageadjust.direct} function to compute direct adjusted rates and "exact" confidence intervals using \code{tibble} objects with multiple grouping keys.
+Computes direct adjusted rates and 95\% Fay-Feuer gamma confidence intervals using \code{tibble} objects with multiple grouping keys and internal statistical calculations.
 
 A tibble (\code{.data}) must be informed containing key variables like year and region code, and population and and events count (e.g. cases) per age group. Check the \code{fleiss_data} for an example.
 

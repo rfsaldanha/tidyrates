@@ -1,10 +1,10 @@
 Package: tidyrates
 Title: Tidy Epidemiological Rates
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person("Raphael", "Saldanha", , "raphael.de-freitas-saldanha@inria.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-0652-8466"))
-Description: Compute age-adjusted rates by direct and indirect methods and other epidemiological indicators in a tidy way, wrapping functions from the 'epitools' package.
+Description: Compute age-adjusted rates by direct and indirect methods and other epidemiological indicators in a tidy way, using internal statistical calculations.
 License: MIT + file LICENSE
 Suggests: 
     knitr,
@@ -13,15 +13,15 @@ Suggests:
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Imports: 
     checkmate,
     dplyr,
-    epitools,
     forcats,
     magrittr,
     purrr,
     rlang,
+    stats,
     tibble,
     tidyr
 Depends: 
