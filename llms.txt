@@ -1,0 +1,80 @@
+# tidyrates
+
+The goal of tidyrates is to compute adjusted rates and other
+epidemiological indicators in a tidy way, using internal statistical
+calculations.
+
+## Installation
+
+You can install the release version of tidyrates from CRAN:
+
+``` r
+
+install.packages("tidyrates")
+```
+
+Or the development version from
+[GitHub](https://github.com/rfsaldanha/tidyrates):
+
+``` r
+
+# install.packages("remotes")
+remotes::install_github("rfsaldanha/tidyrates")
+```
+
+## Example
+
+``` r
+
+library(tidyrates)
+
+head(fleiss_data)
+#>   key age_group       name  value
+#> 1  k1  Under 20 population 230061
+#> 2  k1  Under 20     events    107
+#> 3  k1     20-24 population 329449
+#> 4  k1     20-24     events    141
+#> 5  k1     25-29 population 114920
+#> 6  k1     25-29     events     60
+
+standard_pop <- tibble::tibble(
+    age_group = c("Under 20", "20-24", "25-29", "30-34", "35-39", "40 and over"),
+    population = c(63986.6, 186263.6, 157302.2, 97647.0, 47572.6, 12262.6)
+  )
+
+rate_adj_direct(fleiss_data, .std = standard_pop, .keys = "key")
+#> # A tibble: 5 × 5
+#>   key    crude.rate adj.rate      lci      uci
+#>   <chr>       <dbl>    <dbl>    <dbl>    <dbl>
+#> 1 k1       0.000563 0.000923 0.000804 0.00106 
+#> 2 k2       0.000676 0.000912 0.000824 0.00101 
+#> 3 k3       0.000833 0.000851 0.000772 0.000942
+#> 4 k4       0.00115  0.000927 0.000800 0.00115 
+#> 5 k5plus   0.00167  0.000755 0.000677 0.00188
+```
+
+# Package index
+
+## All functions
+
+- [`fleiss_data`](https://rfsaldanha.github.io/tidyrates/reference/fleiss_data.md)
+  : Fleiss data
+- [`rate_adj_direct()`](https://rfsaldanha.github.io/tidyrates/reference/rate_adj_direct.md)
+  : Compute direct adjusted rates with tibbles
+- [`rate_adj_indirect()`](https://rfsaldanha.github.io/tidyrates/reference/rate_adj_indirect.md)
+  : Compute indirect adjusted rates with tibbles
+- [`seer_std_pop`](https://rfsaldanha.github.io/tidyrates/reference/seer_std_pop.md)
+  : Standard population reference table
+- [`selvin_data_1940`](https://rfsaldanha.github.io/tidyrates/reference/selvin_data_1940.md)
+  : Selvin data, 1940
+- [`selvin_data_1960`](https://rfsaldanha.github.io/tidyrates/reference/selvin_data_1960.md)
+  : Selvin data, 1960
+- [`who_std_pop`](https://rfsaldanha.github.io/tidyrates/reference/who_std_pop.md)
+  : Standard population reference table
+
+# Articles
+
+### All vignettes
+
+- [Quick start
+  guide](https://rfsaldanha.github.io/tidyrates/articles/quickstart.md):

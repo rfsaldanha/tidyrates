@@ -5,18 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="tidyrates">
 <title>Quick start guide • tidyrates</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Quick start guide">
-<meta property="og:description" content="tidyrates">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-2M7VLSRDCB"></script><script>
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Quick start guide">
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-2M7VLSRDCB"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -26,49 +21,36 @@
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">tidyrates</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/quickstart.html">Quick start guide</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/quickstart.html">Quick start guide</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/rfsaldanha/tidyrates/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rfsaldanha/tidyrates/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-article">
 
@@ -77,10 +59,11 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Quick start guide</h1>
+
+      <h1>Quick start guide</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/rfsaldanha/tidyrates/blob/HEAD/vignettes/quickstart.Rmd" class="external-link"><code>vignettes/quickstart.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rfsaldanha/tidyrates/blob/main/vignettes/quickstart.Rmd" class="external-link"><code>vignettes/quickstart.Rmd</code></a></small>
       <div class="d-none name"><code>quickstart.Rmd</code></div>
     </div>
 
@@ -90,11 +73,11 @@
 reference population or other rate. This is a very common procedure in
 epidemiology, allowing the comparison of rates of a event (like
 mortality) among groups that have different age distributions.</p>
-<p>Some packages like the <code>epitools</code> compute these adjusted
-rates. This package functions wraps the <code>epitools</code> functions
-in a tidy way, allowing the computation of age adjusted rates for
-several groups using key variables, like year and regions for
-example.</p>
+<p>The package computes age-adjusted rates internally in a tidy way,
+allowing computation for several groups using key variables, such as
+year and region. Direct rates use 95% Fay-Feuer gamma confidence
+intervals; indirect rates retain the 95% log-normal intervals used in
+earlier versions.</p>
 <div class="section level2">
 <h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h2>
@@ -255,7 +238,7 @@ argument must be a tibble with the events and population data, and the
 <code>.keys</code> argument must point to grouping variables on the
 <code>.data</code> tibble, if available.</p>
 <p>The <code>rate_adj_direct</code> will compute the crude rate,
-adjusted rate and exact confidence intervals for each group.</p>
+adjusted rate and confidence intervals for each group.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/rate_adj_direct.html">rate_adj_direct</a></span><span class="op">(</span><span class="va">fleiss_data</span>, .std <span class="op">=</span> <span class="va">standard_pop</span>, .keys <span class="op">=</span> <span class="st">"key"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 5</span></span></span>
@@ -340,37 +323,38 @@ tibble with the events and population data. The <code>.keys</code>
 argument must point to grouping variables on the <code>.data</code>
 tibble, if available.</p>
 <p>The <code>rate_adj_indirect</code> will compute the crude rate,
-adjusted rate and exact confidence intervals for each group.</p>
+adjusted rate and confidence intervals for each group. Reference
+age-specific rates and the reference crude rate are computed from
+<code>.std</code>. Supply its age groups in the same row order as in
+each group of <code>.data</code>.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/rate_adj_indirect.html">rate_adj_indirect</a></span><span class="op">(</span><span class="va">selvin_data_1940</span>, <span class="va">selvin_data_1960</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
 <span><span class="co">#&gt;   crude.rate adj.rate     lci     uci</span></span>
 <span><span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    0.001<span style="text-decoration: underline;">20</span>  0.001<span style="text-decoration: underline;">20</span> 0.001<span style="text-decoration: underline;">19</span> 0.001<span style="text-decoration: underline;">20</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    0.001<span style="text-decoration: underline;">20</span>  0.001<span style="text-decoration: underline;">38</span> 0.001<span style="text-decoration: underline;">37</span> 0.001<span style="text-decoration: underline;">39</span></span></span></code></pre></div>
 </div>
 </div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p>
-<p>Developed by Raphael Saldanha.</p>
+  <p>Developed by Raphael Saldanha.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>
